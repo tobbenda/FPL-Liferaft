@@ -118,7 +118,6 @@ function App() {
         <Header />
         <SettingsBox />
         <DataBox />
-        <h1> APP </h1>
         <Footer />
       </div>
     </myContext.Provider>

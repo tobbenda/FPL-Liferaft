@@ -2,17 +2,6 @@
   display: flex;
 }
 
-.rank-col {
-  background-color: white;
-}
-
-.web_name-col {
-  background-color: aqua;
-  position: sticky;
-  left: 0px;
-  z-index: 1;
-}
-
 .data-value.hdr{
 padding-top: 10px;
 

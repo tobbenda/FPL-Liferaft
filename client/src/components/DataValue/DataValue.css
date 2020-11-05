@@ -1,8 +1,10 @@
 .data-value{
   padding:2px;
   padding-left: 10px;
-  min-width: 55px;
-  overflow: auto;
+  min-width: 65px;
+  white-space: initial;
+  /* overflow: auto; */
+  /* word-wrap: break-word; */
   /* padding-left: 5px; */
   border-bottom: 1px solid rgba(0,0,0,.5);
   /* border-right: 1px solid rgba(0,0,0,.5); */
@@ -10,4 +12,16 @@
 
 .data-value.hdr{
   font-weight: bold;
+}
+
+.rank-col {
+  background-color: white;
+}
+
+.web_name-col {
+  background-color: rgb(4,245,255);
+  position: sticky;
+  min-width: 70px;
+  left: 0px;
+  z-index: 1;
 }
