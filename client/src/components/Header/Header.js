@@ -1,9 +1,13 @@
 import React from 'react';
 import './Header.css';
+import buoy from '../../buoy.png'
 
 const Header = () => {
   return (
-    <h1 className="header"> Fantasy Liferaft </h1>
+    <div className="header"> 
+    <img className="buoy" src={buoy}></img>
+      <h1 className="header-txt"> Fantasy Liferaft </h1>
+    </div>
   )
 }
 
