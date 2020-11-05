@@ -16,3 +16,27 @@ html {
 button:hover {
   transform: scale(1.1);
 }
+
+.cover-img{
+  width: 80%;
+  margin-top: 20px;
+}
+
+.cover-img-cropped{
+  display: none;
+}
+
+@media (min-width: 600px) {
+  .cover-img{
+    width: 80%;
+    margin-top: 20px;
+    display: none;
+  }
+  
+  .cover-img-cropped{
+    width: 80%;
+    margin-top: 20px;
+    display: block;
+    opacity: .96;
+  }
+}
