@@ -11,3 +11,23 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* @font-face {
+  font-family: IndieFlower;
+  src: local('Dancing_Script'), url(./fonts/Indie_Flower/IndieFlower-Regular.ttf) format('truetype');
+}
+
+* {
+  font-family: IndieFlower; 
+} */
+
+@font-face {
+  font-family: BalsamicSans;
+  src: local('BalsamicSans'), url(./fonts/Balsamiq_Sans/BalsamiqSans-Regular.ttf) format('truetype');
+}
+
+* {
+  font-family: BalsamicSans; 
+}
+
+
