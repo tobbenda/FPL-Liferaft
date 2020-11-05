@@ -9,3 +9,9 @@ padding-top: 10px;
 /* .data-value.hdr {
   background-color: teal;
 } */
+@media (min-width: 600px) {
+  .data-row{
+    /* display: flex;
+    justify-content: space-evenly; */
+  }
+}

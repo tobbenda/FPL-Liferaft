@@ -3,7 +3,7 @@ import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import SettingsBox from './components/SettingsBox/SettingsBox';
 import DataBox from './components/DataBox/DataBox';
-import React, { createContext, useState, useEffect } from 'react';
+import React, { createContext, useState } from 'react';
 
 const sortOptions = [
   { attributeID: "web_name", prettyName: "Short Name", checked: true },
@@ -48,8 +48,8 @@ const sortOptions = [
   { attributeID: "threat_rank_type", prettyName: "Threat rank position", checked: false },
   { attributeID: "ict_index_rank", prettyName: "ICT rank", checked: false },
   { attributeID: "ict_index_rank_type", prettyName: "ICT rank position", checked: false },
-  { attributeID: "corners_and_indirect_freekicks_order", prettyName: "corners_and_indirect_freekicks_order(?)", checked: false },
-  { attributeID: "direct_freekicks_order", prettyName: "direct_freekicks_order(?)", checked: false },
+  { attributeID: "corners_and_indirect_freekicks_order", prettyName: "corners order(?)", checked: false },
+  { attributeID: "direct_freekicks_order", prettyName: "freekicks order(?)", checked: false },
   { attributeID: "penalties_order", prettyName: "penalties_order", checked: false },
   { attributeID: "points_pr_mill", prettyName: "Points pr mill", checked: true },
   { attributeID: "points_pr_game_pr_mill", prettyName: "Points pr game pr mill", checked: true },
@@ -64,6 +64,7 @@ function App() {
   const [checkValues, setCheckValues] = useState(sortOptions);
   const [posFilter, setPosFilter] = useState('All');
   const [sortBy, setSortBy] = useState('total_points');
+  console.log(checkValues);
 
   const getCheckedAttributesQuery = () => {
     const checkedAttributes = checkValues.filter(el => el.checked === true).map(attr => attr.attributeID).join(' ');
@@ -83,7 +84,6 @@ function App() {
   }
 
   const getData = async () => {
-    console.log({posFilter}, {sortBy});
     await fetch("http://localhost:4001/graphql", {
       method: "POST",
       headers: {

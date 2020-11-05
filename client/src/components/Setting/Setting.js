@@ -2,13 +2,13 @@ import React from 'react';
 import './Setting.css';
 
 const Setting = props => {
-  const {attribute, checkChangeHandler} = props;
+  const {attribute, checkChangeHandler, checkDivClickHandler} = props;
   const {attributeID, prettyName, checked} = attribute;
 
   return (
-  <div className="setting">
-    <label>{prettyName}</label>
-    <input id={attributeID} onChange={checkChangeHandler} defaultChecked={checked} type="checkbox"></input>
+  <div onClick={()=> checkDivClickHandler(attributeID)} className="setting">
+    <label className="checkbox-label">{prettyName}</label>
+    <input id={attributeID} onChange={checkChangeHandler} type="checkbox" checked={checked}></input>
   </div>
   )
 }

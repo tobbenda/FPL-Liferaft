@@ -1,13 +1,18 @@
 .data-value{
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding:2px;
   padding-left: 10px;
   min-width: 65px;
+  max-width: 65px;
   white-space: initial;
   /* overflow: auto; */
   /* word-wrap: break-word; */
   /* padding-left: 5px; */
   border-bottom: 1px solid rgba(0,0,0,.5);
   /* border-right: 1px solid rgba(0,0,0,.5); */
+
 }
 
 .data-value.hdr{
@@ -24,4 +29,26 @@
   min-width: 70px;
   left: 0px;
   z-index: 1;
+}
+
+@media (min-width: 600px) {
+  .data-value{
+    width: 90px;
+  }
+
+  .rank-col {
+    background-color: white;
+    position: sticky;
+    min-width: 70px;
+    left: 0px;
+    z-index: 1;
+  }
+
+  .web_name-col {
+    background-color: rgb(4,245,255);
+    position: sticky;
+    min-width: 70px;
+    left: 80px;
+    z-index: 1;
+  }
 }
