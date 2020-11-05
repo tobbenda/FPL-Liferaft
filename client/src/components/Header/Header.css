@@ -10,7 +10,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(0,255,133);
+  background-color: rgba(0,255,133,.9);
   width: 100%;
   height: 70px;
   padding-top: 10px;
@@ -31,4 +31,10 @@
   height: 80%;
   position: relative;
   right: 10px;
+}
+
+@media (min-width: 600px) {
+  .buoy{
+    right: 30px;
+  }
 }

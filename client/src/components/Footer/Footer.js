@@ -9,8 +9,9 @@ function topFunction() {
 const Footer = () => {
   return (
     <div className="footer">
-      <p> some copyright text I dont know what means </p>
+      <p> some copyright stuff IDK </p>
       <button className="to-top-btn" onClick={topFunction}>Top</button>
+      <p>Contact: Tobbenda@gmail.com</p>
     </div>
   )
 }

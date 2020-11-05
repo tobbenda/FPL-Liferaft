@@ -21,6 +21,21 @@ const SettingsBox = () => {
     setCheckValues(newArr);
   }
 
+  const checkDivClickHandler = (id) => {
+    const newArr = checkValues.map( attr => {
+      if (attr.attributeID === id) {
+        return {
+          attributeID: attr.attributeID,
+          prettyName: attr.prettyName,
+          checked: !attr.checked
+        }
+      } else {
+        return attr;
+      }
+    })
+    setCheckValues(newArr);
+  }
+
   const posFilterChangeHandler = e => {
     setPosFilter(e.target.value);
   }
@@ -34,7 +49,7 @@ const SettingsBox = () => {
     <div className="settings-box">
       <h1 className="settings-hdr"> Pick your interests</h1>
       <div className="checkbox-container">
-        {checkValues.map(attribute => <Setting key={attribute.attributeID} checkChangeHandler={checkChangeHandler} attribute={attribute}/>)}
+        {checkValues.map(attribute => <Setting key={attribute.attributeID} checkDivClickHandler={checkDivClickHandler} checkChangeHandler={checkChangeHandler} attribute={attribute}/>)}
       </div>
       <div className="filter-container">
         <h1> Filters: </h1>
