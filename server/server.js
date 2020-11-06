@@ -76,7 +76,8 @@ const schema = buildSchema(`
   type Query {
     getPlayer: Player,
     getPlayers (filter: String): [Player],
-    getPlayersSorted(filter:String, sort:String): [Player]
+    getPlayersSorted(filter:String, sort:String): [Player],
+    getPlayersSorted2(filter:String, sort:String, maxPrice:Int,minPrice:Int): [Player]
   }
 `);
 
@@ -169,7 +170,21 @@ const root = {
     newArr = newArr.sort((a, b) => b[sort] - a[sort]);
     return newArr;
   },
+  getPlayersSorted2: ({ filter, sort, maxPrice, minPrice }) => {
+    let newArr;
+    if (filter === 'All') {
+      newArr = db;
+    } else {
+      newArr = db.filter((player) => player.position === filter);
+    }
+    newArr = newArr.filter((player) => player.now_cost < maxPrice);
+    newArr = newArr.filter((player) => player.now_cost > minPrice);
+    newArr = newArr.sort((a, b) => b[sort] - a[sort]);
+    return newArr;
+  },
 };
+
+
 
 const app = express();
 app.use(cors());
