@@ -108,6 +108,11 @@ function App() {
   const [checkValues, setCheckValues] = useState(sortOptions);
   const [posFilter, setPosFilter] = useState('All');
   const [sortBy, setSortBy] = useState('total_points');
+  const [maxPrice, setMaxPrice] = useState(130);
+  const [minPrice, setMinPrice] = useState(38);
+
+  console.log(maxPrice);
+  console.log(minPrice);
 
   const getCheckedAttributesQuery = () => {
     const checkedAttributes = checkValues.filter(el => el.checked === true).map(attr => attr.attributeID).join(' ');
@@ -120,7 +125,7 @@ function App() {
   // nr of hits (default 20?)
   const getQuery = () => {
     return `query {
-      getPlayersSorted(filter:"${posFilter}", sort:"${sortBy}"){
+      getPlayersSorted2(filter:"${posFilter}", sort:"${sortBy}", maxPrice:${maxPrice}, minPrice:${minPrice}){
         ${getCheckedAttributesQuery()}
       }
     }`
@@ -138,7 +143,7 @@ function App() {
       }),
     })
       .then((r) => r.json())
-      .then((data) => setPlayerData(data.data.getPlayersSorted));
+      .then((data) => setPlayerData(data.data.getPlayersSorted2));
   };
 
   const submitHandler = () => {
@@ -155,6 +160,8 @@ function App() {
         setPosFilter,
         setSortBy,
         submitHandler,
+        setMaxPrice,
+        setMinPrice,
       }
      } >
       <div className="App">

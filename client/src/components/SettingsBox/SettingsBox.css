@@ -35,6 +35,19 @@
   justify-self: center;
 }
 
+.price-filter-container{
+  display: flex;
+  flex-direction: column;
+}
+
+#low-price-filter, #high-price-filter{
+  margin-bottom: 10px;
+  border-radius: 5px;
+  font-size: 15px;
+  border: 2px solid black;
+  margin-top: 3px;
+}
+
 #pos-filter, #sort-value{
   width:50%;
   margin-bottom: 10px;

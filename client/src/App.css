@@ -38,5 +38,7 @@ button:hover {
     margin-top: 20px;
     display: block;
     opacity: .96;
+    /* box-shadow: 5px 5px 10px 3px rgb(0,255,133); */
+    box-shadow: 5px 5px 10px 3px rgba(56,0,60,.9);
   }
 }
