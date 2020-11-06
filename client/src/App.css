@@ -20,6 +20,8 @@ button:hover {
 .cover-img{
   width: 80%;
   margin-top: 20px;
+  box-shadow: 5px 5px 10px 3px rgba(56,0,60,.9);
+
 }
 
 .cover-img-cropped{

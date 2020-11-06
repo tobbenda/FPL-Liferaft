@@ -111,9 +111,6 @@ function App() {
   const [maxPrice, setMaxPrice] = useState(130);
   const [minPrice, setMinPrice] = useState(38);
 
-  console.log(maxPrice);
-  console.log(minPrice);
-
   const getCheckedAttributesQuery = () => {
     const checkedAttributes = checkValues.filter(el => el.checked === true).map(attr => attr.attributeID).join(' ');
     return checkedAttributes

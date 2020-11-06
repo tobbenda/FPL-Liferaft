@@ -63,7 +63,7 @@ const SettingsBox = () => {
 
   return (
     <div className="settings-box">
-      <h1 className="settings-hdr"> Pick your datapoints:</h1>
+      <h1 className="settings-hdr"> Pick your statistics:</h1>
       <div className="checkbox-container">
         {checkValues.map(attribute => <Setting key={attribute.attributeID} checkDivClickHandler={checkDivClickHandler} checkChangeHandler={checkChangeHandler} attribute={attribute}/>)}
       </div>
