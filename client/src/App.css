@@ -6,6 +6,47 @@
 }
 
 html {
+  /* min-height: 100vh; */
+  background-image: url('./fantasy-background-red.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  /* background-color: #00ff85; */
+  position: relative;
+  min-height: 100%;
+}
+
+button:hover {
+  transform: scale(1.1);
+}
+
+.cover-img{
+  width: 80%;
+  margin-top: 20px;
+  box-shadow: 5px 5px 10px 3px rgba(56,0,60,.9);
+
+}
+
+.cover-img-cropped{
+  display: none;
+}
+
+@media (min-width: 600px) {
+  .cover-img{
+    width: 80%;
+    margin-top: 20px;
+    display: none;
+  }
+  
+  .cover-img-cropped{
+    width: 80%;
+    margin-top: 20px;
+    display: block;
+    opacity: .96;
+    /* box-shadow: 5px 5px 10px 3px rgb(0,255,133); */
+    box-shadow: 5px 5px 10px 3px rgba(56,0,60,.9);
+  }
+}
+html {
   min-height: 100vh;
   background-image: url('./fantasy-background-red.jpg');
   background-repeat: no-repeat;

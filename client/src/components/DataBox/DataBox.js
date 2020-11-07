@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import './DataBox.css';
 import DataRow from '.././DataRow/DataRow';
-import { myContext } from '../../App';
+import { myContext } from '../../Main';
 
 
 

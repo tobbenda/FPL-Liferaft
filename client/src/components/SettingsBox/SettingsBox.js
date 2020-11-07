@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import './SettingsBox.css';
-import { myContext } from '../../App';
+import { myContext } from '../../Main';
 import Setting from '../Setting/Setting';
 
 const SettingsBox = () => {
@@ -85,8 +85,8 @@ const SettingsBox = () => {
           </select>
           
           <label>Max. Price:</label>
-          <select onChange={maxPriceHandler} id="high-price-filter" name="price-filter">
-    {getPriceOptions().map((price) => <option selected key={price}>{price}</option>)}
+          <select onChange={maxPriceHandler} defaultValue={129} id="high-price-filter" name="price-filter">
+    {getPriceOptions().map((price) => <option key={price}>{price}</option>)}
           </select>
         </div>
         
@@ -95,8 +95,7 @@ const SettingsBox = () => {
       </div>
       <div className="sort-container">
         <h1>Sort by:</h1>
-        <label>Sort by:</label>
-        <select onChange={sortChangeHandler} id="sort-value" name="sort-value">
+        <select onChange={sortChangeHandler} defaultValue="Total Points" id="sort-value" name="sort-value">
           {checkValues.map(el => <option key= {el.attributeID} id={el.attributeID}>{el.prettyName}</option>)}
         </select>
       </div>
