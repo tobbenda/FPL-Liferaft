@@ -58,7 +58,6 @@ console.log({plainPlayers});
         return data.data.getPlayersByIds;
       }).then(data => {
         data.forEach(element => {
-          console.log(element)
           element.teamPosition = loginPlayerData.find(el => el.element === element.id).position;
         });
         return data;

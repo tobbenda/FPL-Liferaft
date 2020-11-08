@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import './SettingsBox.css';
-import { myContext } from '../../Main';
+import { myContext } from '../../App';
 import Setting from '../Setting/Setting';
 
 const SettingsBox = () => {
