@@ -36,7 +36,8 @@ console.log({plainPlayers});
         web_name,
         position,
         team_name,
-        team
+        team,
+        id
       }
     }`
   }
@@ -55,7 +56,14 @@ console.log({plainPlayers});
       .then((r) => r.json())
       .then((data) =>  {
         return data.data.getPlayersByIds;
-      }).then(data => setPlainPlayers(data));
+      }).then(data => {
+        data.forEach(element => {
+          console.log(element)
+          element.teamPosition = loginPlayerData.find(el => el.element === element.id).position;
+        });
+        return data;
+      })
+      .then(data => setPlainPlayers(data));
   };
 
   const getTeamPlayerData = () => {
@@ -116,17 +124,33 @@ console.log({plainPlayers});
     getTeamPlayerData();
   }, [loginPlayerData])
 
+  const isSubstitute = (teamPos) => {
+    return [12,13,14,15].includes(teamPos)
+  }
+
   return (
     <div className="team-display"> 
       <div className="pitch">
         {/* <button onClick={getTeamPlayerData}>TEST</button> */}
         <div className="playerRow gkp-row">
-          {plainPlayers.filter((el) => el.position === 'Goalkeeper').map((el) => <Player image={getImg(el.team_name)} data={el} />)}
+          {plainPlayers?plainPlayers.filter((el) => el.position === 'Goalkeeper' && !isSubstitute(el.teamPosition)).map((el) => <Player image={getImg(el.team_name)} data={el} />):''}
         </div>
-        <div className="playerRow def-row"></div>
-        <div className="playerRow mid-row"></div>
-        <div className="playerRow fwd-row"></div>
+        <div className="playerRow def-row">
+          {plainPlayers?plainPlayers.filter((el) => el.position === 'Defence' && !isSubstitute(el.teamPosition)).map((el) => <Player image={getImg(el.team_name)} data={el} />):''}
+        </div>
+        <div className="playerRow mid-row">
+          {plainPlayers?plainPlayers.filter((el) => el.position === 'Midfielder' && !isSubstitute(el.teamPosition)).map((el) => <Player image={getImg(el.team_name)} data={el} />):''}
+        </div>
+        <div className="playerRow fwd-row">
+          {plainPlayers?plainPlayers.filter((el) => el.position === 'Attacker' && !isSubstitute(el.teamPosition)).map((el) => <Player image={getImg(el.team_name)} data={el} />):''}
+        </div>
+        <div className="playerRow sub-row">
+          {plainPlayers?plainPlayers.filter((el) => isSubstitute(el.teamPosition)).map((el) => <Player className="sub" image={getImg(el.team_name)} data={el} />):''}
+        </div>
         {/* <img alt="soccer-pitch" src={pitch}></img> */}
+      </div>
+      <div className="team-data-box">
+        <h1>data here</h1>
       </div>
     </div>
   )
