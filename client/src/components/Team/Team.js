@@ -7,9 +7,12 @@ const Team = props => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [playerID, setPlayerID] = useState('');
-  const [data, setData] = useState('');
+  const [loginTeamData, setLoginTeamData] = useState('');
+  const [budget, setBudget] = useState(0);
+  const [players, setPlayers] = useState([]);
 
-  console.log(data);
+  console.log(loginTeamData);
+  console.log({budget})
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
   }
@@ -48,31 +51,34 @@ const Team = props => {
           const chunk = value;
           var string = new TextDecoder("utf-8").decode(chunk);
           result=string;
-          setData(JSON.parse(string));
+          const data = JSON.parse(string)
+          setBudget(data.transfers.bank)
+          setLoginTeamData(data);
         });
       })
       .catch(function(res){ console.log(res) })
   }
 
+
   return (
   <div className="team">
     <form className="login-form" onSubmit={handleSubmit}>
-      <label>
+      <label className="input-block">
       Email:  
       <input className="email-input login-input" type="text" value={email} onChange={handleEmailChange} autoComplete="email" />
       </label>
-        <label>
+        <label className="input-block">
         Password:
         <input className="password-input login-input" type="password" value={password} onChange={handlePasswordChange} autoComplete="current-password"/>
       </label>
-      <label>
+      <label className="input-block">
       FPL Player ID:
       <input className="player-id-input login-input" type="text" value={playerID} onChange={handlePlayerIdChange} />
        </label>
-      <input type="submit" value="Submit" />
+      <input className="submit-btn" type="submit" value="Submit" />
     </form>
     <h1>Team Page</h1>
-    <TeamDisplay />
+    <TeamDisplay loginPlayerData={loginTeamData.picks}/>
   </div>
   )
 }

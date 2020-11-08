@@ -42,5 +42,5 @@ All data for fixtures incl teams, gw, score, diff, events(like goals, cards, bps
 https://fantasy.premierleague.com/api/fixtures/
 
 SHIRTS:
- https://fantasy.premierleague.com/dist/img/shirts/standard/shirt_{NR(1-11)}-110.webp
+ https://fantasy.premierleague.com/dist/img/shirts/standard/shirt_{NR}-110.webp
  EX: https://fantasy.premierleague.com/dist/img/shirts/standard/shirt_11-110.webp

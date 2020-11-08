@@ -120,6 +120,7 @@ const schema = buildSchema(`
 
   type Query {
     getPlayer: Player,
+    getPlayersByIds(elements:[String]):[Player],
     getPlayers (filter: String): [Player],
     getPlayersSorted(filter:String, sort:String): [Player],
     getPlayersSorted2(filter:String, sort:String, maxPrice:Int,minPrice:Int): [Player]
@@ -135,6 +136,12 @@ const root = {
       position: db[0].position,
     };
   },
+  getPlayersByIds: ({elements}) => {
+    const elementArr = JSON.parse(elements);
+    const newArr = db.filter((el) => elementArr.includes(el.id))
+    return newArr;
+  },
+
   getPlayers: ({ filter }) => {
     const newArr = db.filter((el) => el.position === filter);
     return newArr.map((player) => {
