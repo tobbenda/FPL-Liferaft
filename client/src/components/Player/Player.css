@@ -1,0 +1,39 @@
+.player {
+  /* background-image: url('../TeamDisplay/images/shirts/11_EVE.webp'); */
+  background-repeat: no-repeat;
+  background-position: center center;
+  width:150px
+}
+
+.player:hover{
+  background-color: rgba(255,255,255,.3);
+}
+
+.player-img{
+  height: 70px;
+}
+
+.sub-row .player-img{
+  height: 50px;
+  position: relative;
+
+}
+
+.team-pos-12 {
+  order:-1;
+}
+
+.player-name{
+  position: relative;
+  bottom: 15px;
+}
+
+.sub-row .player {
+  position: relative;
+  bottom: 5px;
+}
+
+.sub-row .player-name {
+  position: relative;
+  bottom: 15px;
+}

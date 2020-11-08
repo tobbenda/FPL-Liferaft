@@ -1,0 +1,4 @@
+Notes on room for improvement:
+Currently, I dont know what will happpen if the reader will receive data over multiple 'chunks'. This concern is because the if(done) - block
+is not executed on a successfull call. The fetch function was much inspired by: https://developer.mozilla.org/en-US/docs/Web/API/ReadableStreamDefaultReader/read
+It seems like it might supposed to be a recursive function.

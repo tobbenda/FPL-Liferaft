@@ -1,11 +1,20 @@
 import React from 'react';
 import './Header.css';
-import buoy from '../../buoy.png'
+import { Link } from 'react-router-dom';
+import buoy from '../../buoy.png';
 
 const Header = () => {
   return (
     <div className="header"> 
-    <img alt="life-buoy" className="buoy" src={buoy}></img>
+      <div className="link-container">
+        <Link to='/'>
+          <div className='home hdr-link'>Home</div>
+        </Link>
+        <Link to='/myteam'>
+          <div className='team hdr-link'>Team</div>
+        </Link>
+      </div>
+      <img alt="life-buoy" className="buoy" src={buoy}></img>
       <h1 className="header-txt"> Fantasy Liferaft </h1>
     </div>
   )
