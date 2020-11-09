@@ -1,7 +1,7 @@
 import React from 'react';
 import './Header.css';
 import { Link } from 'react-router-dom';
-import buoy from '../../buoy.png';
+import buoy from '../../utils/images/buoy.png';
 
 const Header = () => {
   return (

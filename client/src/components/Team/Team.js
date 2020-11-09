@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import './Team.css';
-import TeamDisplay from '../TeamDisplay/TeamDisplay'
+import SettingsBox from '../SettingsBox/SettingsBox'
+import DataBox from '../DataBox/DataBox';
+import TeamDisplay from '../TeamDisplay/TeamDisplay';
 
 
 const Team = props => {
@@ -78,7 +80,15 @@ const Team = props => {
       <input className="submit-btn" type="submit" value="Submit" />
     </form>
     <h1>Team Page</h1>
-    <TeamDisplay loginPlayerData={loginTeamData.picks}/>
+    <div className="team-display-and-settings">
+      <TeamDisplay loginPlayerData={loginTeamData.picks}/>
+      <div className="team-data-box">
+          <SettingsBox />
+          <h1>data here</h1>
+      </div>
+
+    </div>
+    <DataBox />
   </div>
   )
 }
