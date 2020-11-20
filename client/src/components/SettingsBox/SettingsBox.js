@@ -53,7 +53,6 @@ const SettingsBox = () => {
   }
 
   const minPriceHandler = e => {
-    console.log(e.target.value);
     setMinPrice(parseInt(e.target.value));
   } 
   const maxPriceHandler = e => {

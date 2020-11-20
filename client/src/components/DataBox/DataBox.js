@@ -10,7 +10,9 @@ const DataBox = () => {
   
 // BEGYNNER Å SETTE CLSS PÅ HDRROW
     const getHeaders = () => {
-      const newObj = {}
+      const newObj = {
+        rank: 'Rank'
+      }
       if (playerData.length !== 0) {
         checkValues.filter(val => val.checked === true ).forEach(val => {
           newObj[val.attributeID] = val.prettyName;

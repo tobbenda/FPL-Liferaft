@@ -38,6 +38,8 @@ const sortOptions = [
   { attributeID: "transfers_out_event", prettyName: "GW trannsfers out", checked: false },
   { attributeID: "value_form", prettyName: "Value form (?)", checked: false },
   { attributeID: "status", prettyName: "Status", checked: false },
+  { attributeID: "top_ownage", prettyName: "% owned by top 50", checked: true },
+
 ]
 
 module.exports.sortOptions = sortOptions;

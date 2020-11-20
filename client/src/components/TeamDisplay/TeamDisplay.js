@@ -1,10 +1,6 @@
 import React, {useState, useEffect, useContext} from 'react';
 import './TeamDisplay.css';
 import Player from '../Player/Player';
-import SettingsBox from '../SettingsBox/SettingsBox';
-import DataBox from '../DataBox/DataBox';
-import { Link } from 'react-router-dom';
-import pitch from './images/pitch.svg'
 import generic_shirt from './images/shirts/generic.webp';
 import Arsenal from './images/shirts/Arsenal.webp';
 import Aston_Villa from './images/shirts/Aston_Villa.webp';
@@ -31,7 +27,6 @@ const TeamDisplay = props => {
   const {checkValues, setCheckValues, setPosFilter, setSortBy, submitHandler, setMaxPrice, setMinPrice} = useContext(myContext);
   const [plainPlayers, setPlainPlayers] = useState([])
   const { loginPlayerData } = props;
-console.log({plainPlayers});
 
   const getQuery = (elements) => {
     return `query {
@@ -40,7 +35,8 @@ console.log({plainPlayers});
         position,
         team_name,
         team,
-        id
+        id,
+        top_ownage,
       }
     }`
   }

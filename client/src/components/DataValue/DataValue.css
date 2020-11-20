@@ -21,6 +21,11 @@
 
 .rank-col {
   background-color: white;
+  order: -1;
+}
+
+.id-col {
+  display: none;
 }
 
 .web_name-col {

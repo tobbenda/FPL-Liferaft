@@ -7,7 +7,6 @@ const DataRow = props => {
 
   return (
     <div className='data-row'>
-      <DataValue header={i==='Rank'?true:false} value={i} attr="rank"/>
       {Object.keys(data).map((key) => <DataValue header={header? true:false} key={key} attr={key} value={data[key]} />)}
     </div>
   )

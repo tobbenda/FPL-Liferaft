@@ -17,11 +17,11 @@ function App() {
   const [sortBy, setSortBy] = useState('total_points');
   const [maxPrice, setMaxPrice] = useState(130);
   const [minPrice, setMinPrice] = useState(38);
-
   console.log(playerData);
+
   const getCheckedAttributesQuery = () => {
     const checkedAttributes = checkValues.filter(el => el.checked === true).map(attr => attr.attributeID).join(' ');
-    return checkedAttributes
+    return checkedAttributes + ' id ';
   }
 
   const getQuery = () => {

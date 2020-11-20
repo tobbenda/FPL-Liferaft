@@ -13,8 +13,6 @@ const Team = props => {
   const [budget, setBudget] = useState(0);
   const [players, setPlayers] = useState([]);
 
-  console.log(loginTeamData);
-  console.log({budget})
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
   }
@@ -45,7 +43,6 @@ const Team = props => {
           console.log({done, value});
           if (done) {
             console.log("Stream complete");
-            console.log(result);
             return;
           }
           
@@ -79,16 +76,12 @@ const Team = props => {
        </label>
       <input className="submit-btn" type="submit" value="Submit" />
     </form>
-    <h1>Team Page</h1>
-    <div className="team-display-and-settings">
-      <TeamDisplay loginPlayerData={loginTeamData.picks}/>
-      <div className="team-data-box">
           <SettingsBox />
-          <h1>data here</h1>
-      </div>
-
+    <h1>Team Page</h1>
+    <div className="team-display-and-data">
+      <TeamDisplay loginPlayerData={loginTeamData.picks}/>
+          <DataBox />
     </div>
-    <DataBox />
   </div>
   )
 }
