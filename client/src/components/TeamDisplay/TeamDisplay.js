@@ -1,8 +1,6 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import './TeamDisplay.css';
-import Player from '../Player/Player'
-import { Link } from 'react-router-dom';
-import pitch from './images/pitch.svg'
+import Player from '../Player/Player';
 import generic_shirt from './images/shirts/generic.webp';
 import Arsenal from './images/shirts/Arsenal.webp';
 import Aston_Villa from './images/shirts/Aston_Villa.webp';
@@ -23,12 +21,12 @@ import Spurs from './images/shirts/Spurs.webp';
 import West_Brom from './images/shirts/West_Brom.webp';
 import West_Ham from './images/shirts/West_Ham.webp';
 import Wolves from './images/shirts/Wolves.webp';
+import { myContext } from '../../App';
 
 const TeamDisplay = props => {
+  const {checkValues, setCheckValues, setPosFilter, setSortBy, submitHandler, setMaxPrice, setMinPrice} = useContext(myContext);
   const [plainPlayers, setPlainPlayers] = useState([])
   const { loginPlayerData } = props;
-
-console.log({plainPlayers});
 
   const getQuery = (elements) => {
     return `query {
@@ -37,7 +35,8 @@ console.log({plainPlayers});
         position,
         team_name,
         team,
-        id
+        id,
+        top_ownage,
       }
     }`
   }
@@ -147,9 +146,6 @@ console.log({plainPlayers});
           {plainPlayers?plainPlayers.filter((el) => isSubstitute(el.teamPosition)).map((el) => <Player className="sub" image={getImg(el.team_name)} data={el} />):''}
         </div>
         {/* <img alt="soccer-pitch" src={pitch}></img> */}
-      </div>
-      <div className="team-data-box">
-        <h1>data here</h1>
       </div>
     </div>
   )

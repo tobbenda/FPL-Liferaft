@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import './Team.css';
-import TeamDisplay from '../TeamDisplay/TeamDisplay'
+import SettingsBox from '../SettingsBox/SettingsBox'
+import DataBox from '../DataBox/DataBox';
+import TeamDisplay from '../TeamDisplay/TeamDisplay';
 
 
 const Team = props => {
@@ -11,8 +13,6 @@ const Team = props => {
   const [budget, setBudget] = useState(0);
   const [players, setPlayers] = useState([]);
 
-  console.log(loginTeamData);
-  console.log({budget})
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
   }
@@ -43,7 +43,6 @@ const Team = props => {
           console.log({done, value});
           if (done) {
             console.log("Stream complete");
-            console.log(result);
             return;
           }
           
@@ -77,8 +76,12 @@ const Team = props => {
        </label>
       <input className="submit-btn" type="submit" value="Submit" />
     </form>
+          <SettingsBox />
     <h1>Team Page</h1>
-    <TeamDisplay loginPlayerData={loginTeamData.picks}/>
+    <div className="team-display-and-data">
+      <TeamDisplay loginPlayerData={loginTeamData.picks}/>
+          <DataBox />
+    </div>
   </div>
   )
 }

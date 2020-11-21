@@ -7,7 +7,7 @@
 
 html {
   /* min-height: 100vh; */
-  background-image: url('./fantasy-background-red.jpg');
+  background-image: url('./utils/images/fantasy-background-red.jpg');
   background-repeat: no-repeat;
   background-attachment: fixed;
   /* background-color: #00ff85; */
@@ -48,7 +48,7 @@ button:hover {
 }
 html {
   min-height: 100vh;
-  background-image: url('./fantasy-background-red.jpg');
+  background-image: url('./utils/images/fantasy-background-red.jpg');
   background-repeat: no-repeat;
   background-attachment: fixed;
   /* background-color: #00ff85; */

@@ -1,54 +1,65 @@
 const express = require('express');
+const filePathRoot = require('app-root-path');
 const { graphqlHTTP } = require('express-graphql');
 const { buildSchema } = require('graphql');
 const fs = require('fs');
 const bodyParser = require('body-parser');
 const cors = require(`cors`);
-const db = JSON.parse(fs.readFileSync('./data/elements_prepped.json'));
+const db = JSON.parse(
+  fs.readFileSync(filePathRoot + '/data/elements_prepped.json')
+);
 const URL = require('url');
 const qs = require('querystring');
 
 const request = require('request');
 
-const login = async(req, resp, email, password, playerID) => {
-  try{
+const login = async (req, resp, email, password, playerID) => {
+  try {
     const formData = {
       password: password,
       login: email,
       redirect_uri: 'https://fantasy.premierleague.com/a/login',
-      app: 'plfpl-web'
-    }
+      app: 'plfpl-web',
+    };
     const cookiePattern = new RegExp(/(?<=pl_profile=)[^;]+/);
-    request.post({url:'https://users.premierleague.com/accounts/login/', formData: formData}, async function optionalCallback(err, httpResponse, body) {
-      if (err) {
-        return console.error('upload failed:', err);
+    request.post(
+      {
+        url: 'https://users.premierleague.com/accounts/login/',
+        formData: formData,
+      },
+      async function optionalCallback(err, httpResponse, body) {
+        if (err) {
+          return console.error('upload failed:', err);
+        }
+        console.log('RESPONSE URL: ', httpResponse.caseless.dict.location);
+        let rawUrl = httpResponse.caseless.dict.location;
+        let parsedUrl = URL.parse(rawUrl);
+        let parsedQs = qs.parse(parsedUrl.query);
+        console.log('STATE: ', parsedQs.state);
+        if (parsedQs.state === 'success') {
+          const myCookieString = `pl_profile=${
+            httpResponse.caseless.dict['set-cookie'][0].match(cookiePattern)[0]
+          }`;
+          const j = request.jar();
+          const url = `https://fantasy.premierleague.com/api/my-team/${playerID}/`;
+          j.setCookie(myCookieString, url);
+          await request({ url: url, jar: j }, (err, res, bod) => {
+            if (err) {
+              console.log('ERROR:', err);
+            } else {
+              resp.json(JSON.parse(bod));
+            }
+          });
+        } else {
+          resp.status(400);
+          resp.end();
+        }
       }
-      console.log('RESPONSE URL: ', httpResponse.caseless.dict.location);
-      let rawUrl = httpResponse.caseless.dict.location;
-      let parsedUrl = URL.parse(rawUrl);
-      let parsedQs = qs.parse(parsedUrl.query);
-      console.log('STATE: ', parsedQs.state);
-      if (parsedQs.state === 'success') {
-        const myCookieString = `pl_profile=${httpResponse.caseless.dict['set-cookie'][0].match(cookiePattern)[0]}`;
-        const j = request.jar();
-        const url = `https://fantasy.premierleague.com/api/my-team/${playerID}/`;
-        j.setCookie(myCookieString, url);
-        await request({url: url, jar: j}, (err, res, bod) => {
-          if (err) {
-            console.log('ERROR:', err);
-          }else {
-            resp.json(JSON.parse(bod));
-          }
-        });
-      } else {
-        resp.status(400);
-        resp.end();
-      }
-    }); 
+    );
   } catch (e) {
     console.log('error');
   }
-}
+};
 
 // Construct a schema, using GraphQL schema language
 // API Endpoints and what they return:
@@ -116,6 +127,8 @@ const schema = buildSchema(`
     points_pr_game_pr_mill: Float,
     team_name: String,
     position: String,
+    top_own_percent: Float,
+    top_cap_percent: Float,
   }
 
   type Query {
@@ -136,9 +149,9 @@ const root = {
       position: db[0].position,
     };
   },
-  getPlayersByIds: ({elements}) => {
+  getPlayersByIds: ({ elements }) => {
     const elementArr = JSON.parse(elements);
-    const newArr = db.filter((el) => elementArr.includes(el.id))
+    const newArr = db.filter((el) => elementArr.includes(el.id));
     return newArr;
   },
 
@@ -209,6 +222,8 @@ const root = {
         points_pr_game_pr_mill: player.points_pr_game_pr_mill,
         team_name: player.team_name,
         position: player.position,
+        top_cap_percent: player.top_cap_percent,
+        top_own_percent: player.top_own_percent,
       };
     });
   },
@@ -236,19 +251,16 @@ const root = {
   },
 };
 
-
-
 const app = express();
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-app.post('/myteam', (req,res) => {
-  const {email, password, playerID} =req.body;
+app.post('/myteam', (req, res) => {
+  const { email, password, playerID } = req.body;
   login(req, res, email, password, playerID);
   // res.end('gret success');
-})
-
+});
 
 app.use(
   '/graphql',

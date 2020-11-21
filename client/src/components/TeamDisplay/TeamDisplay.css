@@ -2,7 +2,7 @@
   display: flex;
   justify-content: flex-start;
   margin-bottom: 80px;
-  width: 100%;
+  width: 60%;
 }
 
 .pitch {
@@ -25,10 +25,3 @@
   justify-content: space-evenly;
 }
 
-.team-data-box {
-  width: 32vW;
-  position: relative;
-  left: 50px;
-  background-color: rgba(255,255,255,.6);
-  box-shadow: 5px 5px 10px 3px rgba(56,0,60,.9);
-}

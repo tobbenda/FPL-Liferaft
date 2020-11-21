@@ -5,7 +5,6 @@ import Setting from '../Setting/Setting';
 
 const SettingsBox = () => {
   const {checkValues, setCheckValues, setPosFilter, setSortBy, submitHandler, setMaxPrice, setMinPrice} = useContext(myContext);
-
   const checkChangeHandler = (e) => {
     const newArr = checkValues.map( attr => {
       if (attr.attributeID === e.target.id) {
@@ -54,7 +53,6 @@ const SettingsBox = () => {
   }
 
   const minPriceHandler = e => {
-    console.log(e.target.value);
     setMinPrice(parseInt(e.target.value));
   } 
   const maxPriceHandler = e => {
