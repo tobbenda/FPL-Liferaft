@@ -127,7 +127,8 @@ const schema = buildSchema(`
     points_pr_game_pr_mill: Float,
     team_name: String,
     position: String,
-    top_ownage: Int,
+    top_own_percent: Float,
+    top_cap_percent: Float,
   }
 
   type Query {
@@ -221,6 +222,8 @@ const root = {
         points_pr_game_pr_mill: player.points_pr_game_pr_mill,
         team_name: player.team_name,
         position: player.position,
+        top_cap_percent: player.top_cap_percent,
+        top_own_percent: player.top_own_percent,
       };
     });
   },
